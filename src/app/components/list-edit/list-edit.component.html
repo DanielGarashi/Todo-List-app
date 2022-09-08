@@ -1,0 +1,88 @@
+<ng-container *ngIf="{
+todoList: todoList$ | async,
+selectedColor: selectedColor$ | async,
+todoLists: todoLists$ | async
+} as myObs">
+
+  <div class="todo-list-header">
+    <h1>Edit List Details</h1>
+
+    <select #combobox
+            class="combobox"
+            (change)="toTodoList(combobox.value)"
+            [disabled]="todoListGroup.dirty">
+      <option [disabled]="true"></option>
+      <option *ngFor="let todoList of myObs.todoLists"
+              [disabled]="listId === todoList.id"
+              [selected]="listId === todoList.id"
+              [value]="todoList.id">
+        {{todoList.caption}}
+      </option>
+    </select>
+
+  </div>
+
+  <div class="todo-list-edit-form-container">
+    <div class="form-field" *ngIf="control('caption') as field">
+      <h3>Caption: </h3>
+      <input type="text" maxlength="75" [formControl]="field">
+      <app-errors-presenter *ngIf="field.dirty" [errors]="field.errors"></app-errors-presenter>
+    </div>
+
+    <div class="form-field form-text-area-field" *ngIf="control('description') as field">
+      <h3>Description: </h3>
+      <textarea type="text" rows="4" [formControl]="field"></textarea>
+      <app-errors-presenter *ngIf="field.dirty" [errors]="field.errors"></app-errors-presenter>
+    </div>
+
+    <div class="form-field" *ngIf="control('icon') as field">
+      <h3>Icon: </h3>
+      <mat-select #selectedIcon
+                  disableOptionCentering
+                  panelClass="myPanelClass"
+                  *ngIf="control('icon') as field" [formControl]="field">
+
+        <mat-select-trigger>
+          <mat-icon [style.color]="myObs.selectedColor">{{selectedIcon.value}}</mat-icon>
+        </mat-select-trigger>
+
+        <mat-option *ngFor="let icon of icons" value="{{icon}}">
+          <mat-icon [style.color]="myObs.selectedColor">{{icon}}</mat-icon>
+        </mat-option>
+
+      </mat-select>
+      <app-errors-presenter *ngIf="field.dirty" [errors]="field.errors"></app-errors-presenter>
+    </div>
+    <div class="form-field" *ngIf="control('icon') as field">
+      <h3>Color: </h3>
+      <select #selectedColor
+              *ngIf="control('color') as field"
+              [style.color]="myObs.selectedColor"
+              (change)="selectedColor$.next(selectedColor.value)"
+              [formControl]="field">
+
+        <option *ngFor="let color of colors"
+                [style.color]="color.code"
+                value="{{color.code}}">
+          {{color.name}}
+        </option>
+
+      </select>
+      <app-errors-presenter *ngIf="field.dirty" [errors]="field.errors"></app-errors-presenter>
+    </div>
+    <div class="group-errors-presenter">
+      <app-errors-presenter [errors]="todoListGroup.errors"></app-errors-presenter>
+    </div>
+    <div class="form-btn">
+      <button class="save-btn"
+              [class.save-btn-hover]="todoListGroup.valid"
+              [class.save-btn-active]="todoListGroup.valid"
+              [disabled]="!todoListGroup.valid"
+              (click)="saveTodoList()">
+        Save
+      </button>
+    </div>
+
+
+  </div>
+</ng-container>

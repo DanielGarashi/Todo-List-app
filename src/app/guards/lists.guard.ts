@@ -1,0 +1,25 @@
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
+import {firstValueFrom} from 'rxjs';
+import {StateService} from "../core/services/state.service";
+import {TodoList} from "../core/models/todo-list";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ListsGuard implements CanActivate {
+
+  constructor(private stateService: StateService, private router: Router) {
+  }
+
+  async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean | UrlTree> {
+    const todoLists: TodoList[] = await firstValueFrom(this.stateService.getAllLists());
+
+    if (todoLists == null || todoLists.length === 0) {
+      return this.router.createUrlTree(['lists/-1/edit']);
+    }
+
+    return true;
+  }
+
+}

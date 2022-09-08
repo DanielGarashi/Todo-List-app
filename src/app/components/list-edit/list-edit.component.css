@@ -1,0 +1,155 @@
+:host {
+  display: grid;
+  flex-direction: column;
+  grid-template-rows: 0.09fr 1fr;
+  grid-template-columns: 0.6fr 1fr 0.6fr;
+}
+
+.todo-list-header {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+.combobox {
+  margin: 5px;
+  border: 2px solid black;
+  grid-column-start: 2;
+  grid-column-end: -1;
+}
+
+
+.todo-list-edit-form-container {
+  grid-column-start: 2;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 600px;
+  justify-self: center;
+  padding: 5px;
+  border-radius: 7px;
+  background-color: rgb(196, 200, 232);
+  box-shadow: 5px 5px 5px rgba(168, 168, 173, 0.56);
+
+}
+
+.form-field {
+  height: 60px;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  padding: 3px;
+  margin: 3px;
+}
+
+.form-btn {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+input, textarea, select {
+  border: 0;
+  border-radius: 4px;
+}
+
+input, mat-select, select {
+  height: 30px;
+  border-radius: 4px;
+}
+
+
+.form-text-area-field {
+  height: auto;
+}
+
+.field-name {
+  margin: 0;
+  padding: 1px;
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+/**/
+
+h1 {
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+h2 {
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.edit-list-form {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  width: 600px;
+  background-color: #e7e9f4;
+  padding: 10px;
+  align-self: center;
+}
+
+.field-caption {
+
+}
+
+button {
+  height: auto;
+  width: 100px;
+  margin: 0 10px 0 0;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  border: 1px solid #4d88f1;
+  background-color: #e7e9f4;
+  border-radius: 4px;
+}
+
+.save-btn {
+  align-self: center;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.save-btn-hover:hover {
+  color: white;
+  background-color: #bdd7f5
+}
+
+.save-btn-active:active {
+  background-color: rgba(104, 112, 231, 0.3);
+}
+
+
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched, select.ng-invalid.ng-touched, mat-select.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+mat-select-trigger {
+  background: white;
+}
+
+mat-select {
+  background: white;
+  font-size: 25px;
+}
+
+.myPanelClass {
+  margin-top: 40px !important;
+}
+
+

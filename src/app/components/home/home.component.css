@@ -1,0 +1,73 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.1em;
+  margin: 0 0 10px 0; /*(top right bottom left)*/
+  padding: 8px 0;
+  color: #d8d9e7;
+  background: rgb(68, 82, 182);
+}
+
+h1 {
+  color: white;
+}
+
+h1, h2, h3 {
+  font-style: italic;
+  font-weight: lighter;
+}
+
+button {
+  height: auto;
+  width: 120px;
+  margin: 0 10px 0 0;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  border: 1px solid #4d88f1;
+  background-color: #e7e9f4;
+  border-radius: 4px;
+}
+
+button:hover {
+  color: white;
+  background-color: #bdd7f5;
+}
+
+button:active {
+  background-color: rgba(104, 112, 231, 0.3)
+}
+
+.data_content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.data_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 15px 0 80px; /*(top right bottom left)*/
+  height: 120px;
+  width: 120px;
+  border-radius: 0.5rem;
+  border: 3px solid rgba(131, 125, 125, 0.16);
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  margin: 2px;
+  font-size: 17px;
+  font-weight: bold;
+  font-family: "Dubai Light", serif;
+}
+
+.count-data {
+  color: #8282ff;
+  padding: 10px;
+  font-size: 30px;
+}
